@@ -1,7 +1,6 @@
 package com.learn.controller;
 
 import com.learn.model.Holiday;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,13 +9,11 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Slf4j
 @Controller
 public class HolidaysController {
 
     @GetMapping("/holidays")
     public String displayHolidays(Model model) {
-        model.addAttribute("username", "prince");
         List<Holiday> holidays = Arrays.asList(
                 new Holiday(" Jan 1 ","New Year's Day", Holiday.Type.FESTIVAL),
                 new Holiday(" Oct 31 ","Halloween", Holiday.Type.FESTIVAL),
@@ -29,7 +26,6 @@ public class HolidaysController {
         );
         Holiday.Type[] types = Holiday.Type.values();
         for (Holiday.Type type : types) {
-            System.out.println(type);
             model.addAttribute(type.toString(),
                     (holidays.stream().filter(holiday -> holiday.getType().equals(type)).collect(Collectors.toList())));
         }
