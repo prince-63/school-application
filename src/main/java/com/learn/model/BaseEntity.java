@@ -2,9 +2,11 @@ package com.learn.model;
 
 import java.time.LocalDateTime;
 
+import jakarta.persistence.MappedSuperclass;
 import lombok.Data;
 
 @Data
+@MappedSuperclass
 public class BaseEntity {
     private LocalDateTime createdAt;
     private String createdBy;

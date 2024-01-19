@@ -13,8 +13,8 @@ public class HolidayService {
     @Autowired
     private HolidayRepository holidayRepository;
 
-    public List<Holiday> findAllHolidays() {
-        return holidayRepository.findAllHolidays();
+    public Iterable<Holiday> findAllHolidays() {
+        return holidayRepository.findAll();
     }
-    
+
 }
