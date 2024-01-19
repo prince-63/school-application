@@ -4,7 +4,6 @@ import com.learn.constants.EazySchoolConstants;
 import com.learn.model.Contact;
 import com.learn.repository.ContactRepository;
 
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,8 +18,6 @@ public class ContactService {
     public boolean saveMessage(Contact contact) {
         boolean isSaved = false;
         contact.setStatus(EazySchoolConstants.OPEN);
-        contact.setCreatedBy(EazySchoolConstants.ANONYMOUS);
-        contact.setCreatedAt(LocalDateTime.now());
         Contact result = contactRepository.save(contact);
         if (result != null && result.getContactId() > 0) {
             isSaved = true;
@@ -38,8 +35,6 @@ public class ContactService {
         Optional<Contact> contact = contactRepository.findById(contactId);
         contact.ifPresent(contact1 -> {
             contact1.setStatus(EazySchoolConstants.CLOSE);
-            contact1.setUpdatedBy(updatedBy);
-            contact1.setUpdatedAt(LocalDateTime.now());
         });
         Contact updatedContact = contactRepository.save(contact.get());
         if (updatedContact != null && updatedContact.getUpdatedBy() != null) {

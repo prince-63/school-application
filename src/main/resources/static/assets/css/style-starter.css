@@ -21100,62 +21100,6 @@ h4.inner-text-title {
 
 /* holidays section */
 
-/* contact section */
-.contact-block input,
-.contact-block textarea {
-  width: 100%;
-  color: var(--heading-color);
-  background: var(--bg-grey);
-  font-size: 16px;
-  padding: 14px;
-  border: 2px solid var(--border-color-light);
-  outline: none;
-  margin-bottom: 20px;
-  border-radius: var(--border-radius);
-}
-
-.cont-left.text-center i {
-  color: var(--secondary-color);
-  font-size: 26px;
-}
-
-.contact-block textarea {
-  height: 180px;
-  margin: 0 0 20px 0;
-}
-
-.contact-block input:focus,
-.contact-block textarea:focus {
-  border: 2px solid var(--secondary-color);
-  background: var(--bg-color);
-}
-
-.contact-left {
-  box-shadow: var(--box-shadow);
-  padding: 40px;
-}
-
-.cont-details p a:hover {
-  color: var(--secondary-color);
-}
-
-.cont-details h6 {
-  font-size: 18px;
-  font-weight: 600;
-  line-height: 18px;
-  margin-bottom: 8px;
-}
-
-.map iframe {
-  -webkit-filter: var(--iframe-filter);
-  -moz-filter: var(--iframe-filter);
-  -ms-filter: var(--iframe-filter);
-  -o-filter: var(--iframe-filter);
-  filter: var(--iframe-filter);
-}
-
-/* //contact section */
-
 /* login section */
 .login-block input,
 .login-block textarea {
@@ -21524,19 +21468,19 @@ h4.inner-text-title {
   padding: 3rem 0;
 }
 
-label {
+.site-section label {
   font-size: 1rem;
   text-align: left;
   display: flex;
 }
 
-.row {
+.site-section .row {
   display: flex;
   flex-wrap: wrap;
   margin-right: 0px;
   margin-left: 0px;
 }
 
-.table-responsive-md {
+.site-section .table-responsive-md {
   margin: 50px;
 }
