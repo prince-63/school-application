@@ -7,7 +7,7 @@ import com.learn.annotation.FieldValueMatch;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 
-public class FieldValueMatchValidator implements ConstraintValidator<FieldValueMatch, Object>{
+public class FieldValueMatchValidator implements ConstraintValidator<FieldValueMatch, Object> {
     private String field;
     private String fieldMatch;
 
@@ -19,12 +19,23 @@ public class FieldValueMatchValidator implements ConstraintValidator<FieldValueM
 
     @Override
     public boolean isValid(Object value, ConstraintValidatorContext context) {
-        Object filedValue = new BeanWrapperImpl(value).getPropertyValue(field);
+        Object fieldValue = new BeanWrapperImpl(value).getPropertyValue(field);
         Object fieldMatchValue = new BeanWrapperImpl(value).getPropertyValue(fieldMatch);
-        if (filedValue != null) {
-            return filedValue.equals(fieldMatchValue);
-        }
-        else {
+        /*
+         * if (fieldValue != null) {
+         * if (fieldValue.toString().startsWith("$2a")) {
+         * return true;
+         * } else {
+         * return fieldValue.equals(fieldMatchValue);
+         * }
+         * } else {
+         * return fieldMatchValue == null;
+         * }
+         */
+
+        if (fieldValue != null) {
+            return fieldValue.equals(fieldMatchValue);
+        } else {
             return fieldMatchValue == null;
         }
     }

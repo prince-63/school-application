@@ -28,4 +28,5 @@ public class Holiday extends BaseEntity {
     public enum Type {
         FESTIVAL, FEDERAL
     }
+    
 }

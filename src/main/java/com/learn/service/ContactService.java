@@ -1,6 +1,6 @@
 package com.learn.service;
 
-import com.learn.constants.EazySchoolConstants;
+import com.learn.constants.YourSchoolConstants;
 import com.learn.model.Contact;
 import com.learn.repository.ContactRepository;
 
@@ -17,7 +17,7 @@ public class ContactService {
 
     public boolean saveMessage(Contact contact) {
         boolean isSaved = false;
-        contact.setStatus(EazySchoolConstants.OPEN);
+        contact.setStatus(YourSchoolConstants.OPEN);
         Contact result = contactRepository.save(contact);
         if (result != null && result.getContactId() > 0) {
             isSaved = true;
@@ -26,7 +26,7 @@ public class ContactService {
     }
 
     public List<Contact> findMsgsWithOpenStatus() {
-        List<Contact> contactMsgs = contactRepository.findByStatus(EazySchoolConstants.OPEN);
+        List<Contact> contactMsgs = contactRepository.findByStatus(YourSchoolConstants.OPEN);
         return contactMsgs;
     }
 
@@ -34,7 +34,7 @@ public class ContactService {
         boolean isUpdated = false;
         Optional<Contact> contact = contactRepository.findById(contactId);
         contact.ifPresent(contact1 -> {
-            contact1.setStatus(EazySchoolConstants.CLOSE);
+            contact1.setStatus(YourSchoolConstants.CLOSE);
         });
         Contact updatedContact = contactRepository.save(contact.get());
         if (updatedContact != null && updatedContact.getUpdatedBy() != null) {

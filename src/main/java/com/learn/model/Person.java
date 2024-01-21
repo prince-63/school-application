@@ -5,10 +5,14 @@ import org.hibernate.annotations.GenericGenerator;
 import com.learn.annotation.FieldValueMatch;
 import com.learn.annotation.PasswordValidator;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Transient;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -29,6 +33,7 @@ import lombok.ToString;
         @FieldValueMatch(field = "email", fieldMatch = "confirmEmail", message = "Email addresses do not match!")
 })
 public class Person extends BaseEntity {
+    
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
     @GenericGenerator(name = "native", strategy = "native")
@@ -60,4 +65,13 @@ public class Person extends BaseEntity {
     @Size(min = 5, message = "Password must be at least 5 character!")
     @Transient
     private String confirmPwd;
+
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST, targetEntity = Roles.class)
+    @JoinColumn(name = "role_id", referencedColumnName = "roleId", nullable = false)
+    private Roles roles;
+
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL, targetEntity = Address.class)
+    @JoinColumn(name = "address_id", referencedColumnName = "addressId", nullable = true)
+    private Address address;
+
 }
