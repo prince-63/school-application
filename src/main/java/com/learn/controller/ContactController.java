@@ -43,18 +43,4 @@ public class ContactController {
         contactService.saveMessage(contact);
         return "redirect:/contact";
     }
-
-    @GetMapping("/displayMessages")
-    public ModelAndView displayMessages(Model model) {
-        List<Contact> contactList = contactService.findMsgsWithOpenStatus();
-        ModelAndView modelAndView = new ModelAndView("message.html");
-        modelAndView.addObject("contactMsgs", contactList);
-        return modelAndView;
-    }
-    
-    @GetMapping("/closeMsg")
-    public String closeMessages(@RequestParam int id, Authentication authentication) {
-        contactService.updateMsgStatus(id, authentication.getName());
-        return "redirect:/displayMessages";
-    }
 }

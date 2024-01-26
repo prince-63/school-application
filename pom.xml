@@ -10,10 +10,10 @@
 		<!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.learn</groupId>
-	<artifactId>school-management</artifactId>
+	<artifactId>your-school-management</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>school-management</name>
-	<description>Demo project for Spring Boot</description>
+	<name>your-school-management</name>
+	<description>Your School - Best Educational Institute for your Child</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>

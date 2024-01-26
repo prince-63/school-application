@@ -19,10 +19,13 @@ public class DashBoardController {
 
     @RequestMapping("/dashboard")
     public String displayDashBoard(Model model, Authentication authentication, HttpSession session) {
-       Person person = personRepository.readByEmail(authentication.getName());
+        Person person = personRepository.readByEmail(authentication.getName());
         model.addAttribute("username", person.getName());
         model.addAttribute("roles", authentication.getAuthorities().toString());
         session.setAttribute("loggedInPerson", person);
+        if (null != person.getYourClass() && null != person.getYourClass().getName()) {
+            model.addAttribute("enrolledClass", person.getYourClass().getName());
+        }
         return "dashboard.html";
     }
 }

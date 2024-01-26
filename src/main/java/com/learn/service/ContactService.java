@@ -15,31 +15,20 @@ public class ContactService {
     @Autowired
     private ContactRepository contactRepository;
 
-    public boolean saveMessage(Contact contact) {
-        boolean isSaved = false;
+    public void saveMessage(Contact contact) {
         contact.setStatus(YourSchoolConstants.OPEN);
-        Contact result = contactRepository.save(contact);
-        if (result != null && result.getContactId() > 0) {
-            isSaved = true;
-        }
-        return isSaved;
+        contactRepository.save(contact);
     }
 
-    public List<Contact> findMsgsWithOpenStatus() {
-        List<Contact> contactMsgs = contactRepository.findByStatus(YourSchoolConstants.OPEN);
-        return contactMsgs;
+    public List<Contact> findMsgWithOpenStatus() {
+        return contactRepository.findByStatus(YourSchoolConstants.OPEN);
     }
 
-    public boolean updateMsgStatus(int contactId, String updatedBy) {
-        boolean isUpdated = false;
+    public void updateMsgStatus(int contactId) {
         Optional<Contact> contact = contactRepository.findById(contactId);
         contact.ifPresent(contact1 -> {
             contact1.setStatus(YourSchoolConstants.CLOSE);
         });
-        Contact updatedContact = contactRepository.save(contact.get());
-        if (updatedContact != null && updatedContact.getUpdatedBy() != null) {
-            isUpdated = true;
-        }
-        return isUpdated;
+        contactRepository.save(contact.get());
     }
 }
