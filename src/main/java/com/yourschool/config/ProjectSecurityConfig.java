@@ -15,17 +15,18 @@ public class ProjectSecurityConfig {
 	public SecurityFilterChain securityFilterChain(HttpSecurity http)
 			throws Exception {
 
-		http.csrf((csrf) -> csrf.ignoringRequestMatchers("/saveMsg").ignoringRequestMatchers("/public/**").ignoringRequestMatchers("/api/**").ignoringRequestMatchers("/data-api/**"))
+		http.csrf((csrf) -> csrf.ignoringRequestMatchers("/saveMsg").ignoringRequestMatchers("/public/**").ignoringRequestMatchers("/api/**").ignoringRequestMatchers("/data-api/**").ignoringRequestMatchers("/yourschool/actuator/**"))
 				.authorizeHttpRequests(
 						(requests) -> requests.requestMatchers("/dashboard").authenticated()
 								.requestMatchers("/displayProfile").authenticated()
 								.requestMatchers("/updateProfile").authenticated()
 								.requestMatchers("/api/**").authenticated()
-								.requestMatchers("/admin/**").hasRole("ADMIN")
-								.requestMatchers("/student/**").hasRole("STUDENT")
+								.requestMatchers("/data-api/**").authenticated()
 								.requestMatchers("/displayMessages/**").hasRole("ADMIN")
 								.requestMatchers("/closeMsg/**").hasRole("ADMIN")
-								.requestMatchers("/data-api/**").authenticated()
+								.requestMatchers("/admin/**").hasRole("ADMIN")
+								.requestMatchers("/yourschool/actuator/**").hasRole("ADMIN")
+								.requestMatchers("/student/**").hasRole("STUDENT")
 								.requestMatchers("/").permitAll()
 								.requestMatchers("/home").permitAll()
 								.requestMatchers("/holidays/**").permitAll()
