@@ -1,10 +1,12 @@
 # Your School
 
-Your School is a spring mvc web application. That give we a flexiblity to store our school details on db.
+Your School is a Spring MVC web application that provides flexibility to store school details in a database.
 
-# here are some use
-  - storing the student information like name, email, address, class, enroled courses.
-  - and it's give a flexiblity to contact directly to admin use contact form.
-  - and also have a login and register feature that make this application more secure.
+## Features:
+- Storing student information, including name, email, address, class, and enrolled courses.
+- Contact form for direct communication with the school.
+- Login and register features for enhanced security.
 
-- it's provide a user interface as well as Rest Api.
+## Interfaces:
+- User interface (UI) for interactive usage.
+- REST API for programmatic access.
