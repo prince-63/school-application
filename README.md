@@ -1,4 +1,4 @@
-# Your School
+# School Application
 
 Your School is a Spring MVC web application that provides flexibility to store school details in a database.
 
